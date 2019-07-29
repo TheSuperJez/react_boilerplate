@@ -1,0 +1,177 @@
+{
+  "root": true,
+  "extends": [
+    "airbnb"
+  ],
+  "settings": {
+    "react": {
+      "pragma": "React",  // Pragma to use, default to "React"
+      "version": "16.3"  // React version, default to the latest React stable release
+    }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y"
+  ],
+  "rules": {
+    // https://eslint.org/docs/rules/function-paren-newline
+    // This rule enforces consistent line breaks inside parentheses of function parameters or
+    // arguments.
+    //
+    // Status: disabled
+    // Reason: personal preference.
+    "function-paren-newline": 0,
+
+    // https://eslint.org/docs/rules/global-require
+    // While require() may be called anywhere in code, some style guides prescribe that it should
+    // be called only in the top level of a module to make it easier to identify dependencies.
+    // For instance, it’s arguably harder to identify dependencies when they are deeply nested
+    // inside of functions and other statements
+    //
+    // Since require() does a synchronous load, it can cause performance problems when used in other
+    // locations.
+    //
+    // Status: disabled
+    // Reason: I think we did this to allow for dynamic imports back in webpack 2 beta.  Not needed now.
+    "global-require": 0,
+
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Ensures an imported module can be resolved to a module on the local filesystem, as defined by
+    // standard Node require.resolve behavior.
+    //
+    // Status: enabled
+    "import/no-unresolved": [2, {
+      "caseSensitive": true
+    }],
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce all anchors to contain accessible content.
+    //
+    // Status: enabled
+    "jsx-a11y/anchor-has-content": 2,
+
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce all anchors are valid, navigable elements.
+    //
+    // Status: Enabled (for a tag only)
+    "jsx-a11y/anchor-is-valid": ["error", { "components": [] }],
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce all aria-* props are valid.
+    //
+    // Status: Enabled
+    "jsx-a11y/aria-props": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // ARIA state and property values must be valid.
+    //
+    // Status: Enabled
+    "jsx-a11y/aria-proptypes": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce that elements with ARIA roles must use a valid, non-abstract ARIA role.
+    //
+    // Status: Enabled
+    "jsx-a11y/aria-role": 2,
+
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes.
+    //
+    // Status: Enabled
+    "jsx-a11y/aria-unsupported-elements": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce a clickable non-interactive element has at least one keyboard event listener.
+    //
+    // Status: Enabled
+    "jsx-a11y/click-events-have-key-events": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce heading (h1, h2, etc) elements contain accessible content.
+    //
+    // Status: Enabled
+    "jsx-a11y/heading-has-content": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce <img> alt prop does not contain the word "image", "picture", or "photo".
+    //
+    // Status: Enabled
+    "jsx-a11y/img-redundant-alt": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce that <label> elements have the htmlFor prop.
+    //
+    // Status: Enabled
+    "jsx-a11y/label-has-for": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce lang attribute has a valid value.
+    //
+    // Status: Enabled
+    "jsx-a11y/lang": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce usage of onBlur over onChange on select menus for accessibility.
+    //
+    // Status: Enabled
+    "jsx-a11y/no-onchange": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce that non-interactive, visible elements (such as <div>) that have click handlers use the role attribute.
+    //
+    // Status: Enabled
+    "jsx-a11y/no-static-element-interactions": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce that elements with ARIA roles must have all required attributes for that role.
+    //
+    // Status: Enabled
+    "jsx-a11y/role-has-required-aria-props": 2,
+
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y
+    // Enforce that elements with ARIA roles must have all required attributes for that role.
+    //
+    // Status: Enabled
+    "jsx-a11y/role-supports-aria-props": 2,
+
+    // Enforce a maximum line length
+    // source: eslint
+    // https://eslint.org/docs/rules/max-len
+    // Status: Enabled
+    "max-len": 2,
+
+    // https://eslint.org/docs/rules/no-debugger
+    // Prohibit debugger statements in code.
+    //
+    // Status: Warning Only
+    // Reason: We need them for debugging and we remove them from production code.
+    "no-debugger": 1,
+
+    // https://eslint.org/docs/rules/no-unused-vars
+    //
+    // Status: Custom
+    // Reason: ignoreRestSiblings allows us to use rest to omit properties from an object.
+    //         Eliminates the need to load lodash.omit
+    "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+
+    // https://github.com/yannickcr/eslint-plugin-react/tree/master/docs/rules
+    // Restrict file extensions that may contain JSX (react/jsx-filename-extension)
+    //
+    // Status: Custom Warning
+    // Reason: Webpack and Babel are treating .js files as JSX, so we added it to the list.
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  }
+}
