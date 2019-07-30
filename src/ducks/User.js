@@ -22,15 +22,13 @@ export const UserReducer = (state = initialState.user, action) => {
     case Types.CREATE_ITEM: {
       const item = action.payload.name;
       const newState = _.cloneDeep(state);
-      newState.items.push(item);
+      newState.items = newState.items.push(item);
       return newState;
     }
 
     case Types.DELETE_ITEM: {
-      const newState = _.cloneDeep(state);
-      const index = _.findIndex(newState.items, { id: action.payload });
-      newState.items.splice(index, 1);
-      return newState;
+      /* Missing imp */
+      return {};
     }
 
     default:
