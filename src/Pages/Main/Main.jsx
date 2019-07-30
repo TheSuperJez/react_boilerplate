@@ -1,13 +1,11 @@
 /* eslint-disable react/prefer-stateless-function */
-import React, { Component } from 'react';
+import React from 'react';
 import { Welcome } from '../../components';
 
-export default class Main extends Component {
-  render() {
-    return (
-      <div>
-        <Welcome />
-      </div>
-    );
-  }
+export default function Main() {
+  return (
+    <React.Fragment>
+      <Welcome />
+    </React.Fragment>
+  );
 }
